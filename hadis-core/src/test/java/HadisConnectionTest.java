@@ -1,6 +1,8 @@
+import com.hadis.core.HadisFactory;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -16,13 +18,18 @@ public class HadisConnectionTest {
 
     @Before
     public void before() {
-
+        redisProperties = new Properties();
+        try {
+            redisProperties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("hadis.properties"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
     public void connectTest() {
-
-
+        final HadisFactory hadisFactory = new HadisFactory();
+        hadisFactory.buildClient(redisProperties);
     }
 
 }

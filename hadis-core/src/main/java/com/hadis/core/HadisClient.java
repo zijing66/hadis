@@ -1,3 +1,8 @@
+package com.hadis.core;
+
+import com.hadis.core.config.HadisConfig;
+
+import java.util.Map;
 import java.util.concurrent.ScheduledExecutorService;
 
 /**
@@ -14,4 +19,9 @@ public class HadisClient {
      */
     private ScheduledExecutorService scheduledExecutorService;
 
+    private Map<String, HadisConfig> haCluster;
+
+    public HadisClient() {
+        this.scheduledExecutorService = null;
+    }
 }
