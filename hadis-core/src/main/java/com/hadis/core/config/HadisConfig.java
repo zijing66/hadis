@@ -9,8 +9,18 @@ package com.hadis.core.config;
  */
 public class HadisConfig {
 
+    String name;
     String nodes;
     String passwd;
+
+    public String getName() {
+        return name;
+    }
+
+    public HadisConfig setName(String name) {
+        this.name = name;
+        return this;
+    }
 
     public String getNodes() {
         return nodes;
@@ -28,5 +38,15 @@ public class HadisConfig {
     public HadisConfig setPasswd(String passwd) {
         this.passwd = passwd;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("HadisConfig{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", nodes='").append(nodes).append('\'');
+        sb.append(", passwd='").append(passwd).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

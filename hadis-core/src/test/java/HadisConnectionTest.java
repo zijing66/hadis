@@ -1,6 +1,8 @@
+import com.hadis.core.HadisClient;
 import com.hadis.core.HadisFactory;
 import org.junit.Before;
 import org.junit.Test;
+import redis.clients.jedis.JedisCluster;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -28,8 +30,10 @@ public class HadisConnectionTest {
 
     @Test
     public void connectTest() {
-        final HadisFactory hadisFactory = new HadisFactory();
-        hadisFactory.buildClient(redisProperties);
+        HadisFactory<JedisCluster> hadisFactory = new HadisFactory<>();
+        HadisClient hadisClient = hadisFactory.buildClient(redisProperties);
+        while (true) {
+        }
     }
 
 }
