@@ -45,8 +45,8 @@ public class HadisClient<T> {
 
     public HadisClient(SortedMap<String, HadisConfig> haCluster) {
         this.scheduledExecutorService = Executors.newScheduledThreadPool(haCluster.size());
+        currentActive.set(haCluster.firstKey());
         for (Map.Entry<String, HadisConfig> stringHadisConfigEntry : haCluster.entrySet()) {
-            currentActive.set(stringHadisConfigEntry.getKey());
             hadisMap.put(stringHadisConfigEntry.getKey(), new ClientInfo<T>()
                     .setHadisConfig(stringHadisConfigEntry.getValue())
                     .setRedisHolder(new JedisHolder(stringHadisConfigEntry.getValue())));
